@@ -9,30 +9,39 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/compatible": "^5.1.4",
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "@google-cloud/vision": "^5.1.0",
+    "@huggingface/inference": "^3.6.2",
+    "@tanstack/react-table": "^8.21.2",
+    "ai": "^4.2.2",
+    "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "connect-mongo": "^5.1.0",
+    "cookies": "^0.9.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "firebase": "^11.3.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "googleapis": "^144.0.0",
-=======
     "jsonwebtoken": "^9.0.2",
->>>>>>> 28d713f2d16fcf8fdb280e8f2418fb04c2479621
-=======
-    "jsonwebtoken": "^9.0.2",
->>>>>>> 28d713f2d16fcf8fdb280e8f2418fb04c2479621
-    "mongoose": "^8.10.1",
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^8.11.0",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.10.0",
+    "openai": "^4.90.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "twilio": "^5.4.4"
+    "qrcode.react": "^4.2.0",
+    "react-chatbot-kit": "^2.2.2",
+    "recharts": "^2.15.1",
+    "session": "^0.1.0",
+    "stripe": "^17.7.0",
+    "swiper": "^11.2.6",
+    "twilio": "^5.4.5"
   },
   "description": "",
   "devDependencies": {

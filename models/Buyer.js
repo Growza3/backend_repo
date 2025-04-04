@@ -1,10 +1,20 @@
 const mongoose = require("mongoose");
 
-const BuyerSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  otp: { type: String },
-  otpExpiration: { type: Date },
+const UserSchema = new mongoose.Schema({
+  phone: {
+    type: String,
+    required: true,
+    unique: true, // Ensure only one mobile number per user
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true, // Ensure emails are unique for buyer identification
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("Buyer", BuyerSchema);
+module.exports = mongoose.model("User", UserSchema);

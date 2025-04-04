@@ -1,16 +1,25 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema(
-  {
-    username: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String }, // Optional for Google OAuth users
-    googleId: { type: String }, // For Google OAuth users
+const UserSchema = new mongoose.Schema({
+  phone: { type: String, required: true},
+  password: { type: String, required: true },
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  otp: {
+    type: String,
+    required: false, 
+    expires: 120, // ⏳ Auto-delete after 2 minutes (120 seconds)
   },
-  {
-    timestamps: true,
-  }
-);
+  googleId: { type: String }, // For Google OAuth users
+  verified: { type: Boolean, default: false },
+  resetToken: String, // Stores token for password reset
+  resetTokenExpiry: Date, // Expiry for reset token
+}, { timestamps: true });
 
-const user = mongoose.model("user", userSchema);
+// Create User Model
+const user = mongoose.model("user", UserSchema);
 module.exports = user;
+
+
+
+
