@@ -48,12 +48,12 @@ const PAYPAL_API = "https://api-m.sandbox.paypal.com"; // Use live PayPal API in
 
 app.use(
     cors({
-      origin: "https://your-frontend.vercel.app", // must match deployed frontend domain
+      origin: "https://growza.onrender.com", // must match deployed frontend domain
       credentials: true,
     })
   );
 
-  
+
 const generateAccessToken = async () => {
     try {
         const response = await axios.post(
