@@ -194,7 +194,7 @@ router.get("/farm-details/:id", async (req, res) => {
 router.get("/home/products-home", async (req, res) => {
   try {
     const products = await Product.find({}, "name price category stock images").lean(); // Convert Mongoose docs to JS objects
-    const baseUrl = "http://localhost:5000/uploads/";
+    const baseUrl = "https://growza.onrender.com/uploads/";
 
     const updatedProducts = products.map((product) => ({
       _id: product._id, // Ensure _id is included
