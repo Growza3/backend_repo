@@ -45,6 +45,15 @@ const superRoutes = require("./routes/superRoutes");
 const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
 const PAYPAL_SECRET = process.env.PAYPAL_SECRET;
 const PAYPAL_API = "https://api-m.sandbox.paypal.com"; // Use live PayPal API in production
+
+app.use(
+    cors({
+      origin: "https://your-frontend.vercel.app", // must match deployed frontend domain
+      credentials: true,
+    })
+  );
+
+  
 const generateAccessToken = async () => {
     try {
         const response = await axios.post(
@@ -184,7 +193,7 @@ app.use(
       secure: false, // Set to true in production with HTTPS
       httpOnly: true,
     },
-  })
+  }) 
   );
   
   // Initialize passport *AFTER* session middleware
