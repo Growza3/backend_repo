@@ -55,7 +55,7 @@ router.get(
     );
 
     // Redirect frontend with token
-    res.redirect(`https://your-frontend-name.onrender.com/ProductPage?accessToken=${token}&email=${req.user.email}`);
+    res.redirect(`https://growza.onrender.com/ProductPage?accessToken=${token}&email=${req.user.email}`);
   }
 );
 
