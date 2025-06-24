@@ -156,8 +156,6 @@ app.use(productRoutes);
 app.use(orderRoutes);
 app.use("/api", orderRoutes);
 app.use(deliveryRoutes);
-app.use('/uploads', express.static('uploads'));
-
 app.get("/api/get-api-key", (req, res) => {
     res.json({ apiKey: process.env.VITE_OPENAI_API_KEY });
 });
@@ -237,18 +235,6 @@ app.get("/api/sellers", async (req, res) => {
       res.status(500).json({ success: false, message: "Error fetching sellers" });
     }
   });
-  
-
-// Multer Configuration for Multiple Image Uploads
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "uploads/"); // Save files in "uploads" folder
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname); // Unique filename
-    },
-});
-const upload = multer({ storage: storage });
 
 // Route to Add Product (with Multiple Image Upload)
 app.post("/api/products", upload.array("images", 5), async (req, res) => {
