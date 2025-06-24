@@ -29,6 +29,7 @@ const bcrypt = require("bcryptjs");
 const passport=require("passport");
 const adminRoutes = require("./routes/adminRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const upload = require("./middleware/upload");
 
 const admins = require("./routes/admins");
 const Review=require("./models/Review");
@@ -156,6 +157,8 @@ app.use(productRoutes);
 app.use(orderRoutes);
 app.use("/api", orderRoutes);
 app.use(deliveryRoutes);
+
+
 app.get("/api/get-api-key", (req, res) => {
     res.json({ apiKey: process.env.VITE_OPENAI_API_KEY });
 });
