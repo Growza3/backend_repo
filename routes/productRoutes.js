@@ -25,7 +25,7 @@ router.get("/products", async (req, res) => {
     const products = await Product.find({}, "name category stock price images status overview usageInstructions productFeatures");
     const updatedProducts = products.map(product => ({
       ...product._doc,
-      images: product.images.map(img => `http://localhost:5000/uploads/${img}`)
+      images: product.images.map(img => `https://backend-repo-71f8.onrender.com/uploads/${img}`)
     }));
     res.json({ success: true, products: updatedProducts });
   } catch (error) {
@@ -40,7 +40,7 @@ router.get("/products/:id", async (req, res) => {
     const product = await Product.findById(req.params.id);
     if (!product) return res.status(404).json({ message: "Product not found" });
 
-    const images = product.images.map(img => `http://localhost:5000/uploads/${img}`);
+    const images = product.images.map(img => `https://backend-repo-71f8.onrender.com/uploads/${img}`);
 
     res.json({ ...product._doc, images });
   } catch (error) {
@@ -219,7 +219,7 @@ router.get("/api/products/:id", async (req, res) => {
     }
 
     // Convert stored filenames to full URLs
-    const baseUrl = "http://localhost:5000/uploads/"; // Change based on your server setup
+    const baseUrl = "https://backend-repo-71f8.onrender.com/uploads/"; // Change based on your server setup
     const productWithFullImages = {
       ...product._doc, 
       images: product.images.map(img => baseUrl + img),

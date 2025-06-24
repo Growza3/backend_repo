@@ -42,10 +42,6 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-
-
-
-
 // Google OAuth Login Route
 router.get(
   "/auth/google",
@@ -73,47 +69,14 @@ router.get(
       }
 
       // Redirect to the frontend or return user data
-      res.redirect("http://localhost:5173"); // Change this to your frontend URL
+      res.redirect("http://growza.onrender.com"); // Change this to your frontend URL
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Error authenticating with Google" });
     }
   }
 );
-// Google OAuth Login Route
-router.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
 
-// Google OAuth Callback Route
-router.get(
-  "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/" }),
-  async (req, res) => {
-    try {
-      const { id, displayName, emails } = req.user;
-
-      // Check if the user exists in MongoDB
-      let user = await User.findOne({ googleId: id });
-      if (!user) {
-        // If user doesn't exist, create one
-        user = new User({
-          googleId: id,
-         
-          email: emails[0].value,
-        });
-        await user.save();
-      }
-
-      // Redirect to the frontend or return user data
-      res.redirect("http://localhost:5173"); // Change this to your frontend URL
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Error authenticating with Google" });
-    }
-  }
-);
 router.get("/buyer/:email", async (req, res) => {
   try {
       const buyer = await User.findOne({ email: req.params.email });
