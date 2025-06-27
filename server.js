@@ -692,9 +692,17 @@ app.post("/api/product/cart", async (req, res) => {
     }
   });
 
-// Multer setup (for image upload)
-const str = multer.memoryStorage();
-const upd = multer({ str });
+// Set up disk storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // this should be a publically exposed folder
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // keep original name
+  },
+});
+
+const upd = multer({ storage }); // NOT 'str'
 
 // 🌱 API Route to Detect Plant Disease
 app.post("/detect-disease", upd.single("image"), async (req, res) => {
