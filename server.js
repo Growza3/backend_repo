@@ -158,7 +158,7 @@ app.use(orderRoutes);
 app.use("/api", orderRoutes);
 app.use(deliveryRoutes);
 
-
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile','email'] }));
 app.get("/api/get-api-key", (req, res) => {
     res.json({ apiKey: process.env.VITE_OPENAI_API_KEY });
 });
@@ -184,6 +184,7 @@ app.use("/api", buyerRoutes);
 app.use("/api", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/services", serviceRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
     session({
